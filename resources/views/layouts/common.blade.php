@@ -15,6 +15,7 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="js/handler.js"></script>
     </head>
     <body>
     <header class="text-gray-600 body-font">

@@ -26,6 +26,10 @@ class FormController extends Controller
         return view('other-form');
     }
 
+    public function dinamicForm(){
+        return view('dinamic-form');
+    }
+
     public function store(Request $request){
         dd($request->all());
     }

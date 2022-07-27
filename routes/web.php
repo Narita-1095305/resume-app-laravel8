@@ -24,6 +24,7 @@ Route::get('/work-form', [FormController::class, 'workForm']);
 Route::get('/licence-form', [FormController::class, 'licenceForm']);
 Route::get('/summary-form', [FormController::class, 'summaryForm']);
 Route::get('/other-form', [FormController::class, 'otherForm']);
+Route::get('/dinamic-form', [FormController::class, 'dinamicForm']);
 Route::post('/store', [FormController::class, 'store'])->name('form.store');
 
 Route::get('/dashboard', function () {
