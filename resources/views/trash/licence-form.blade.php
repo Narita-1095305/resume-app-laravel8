@@ -7,7 +7,7 @@
                 <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                     <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">免許・資格を入力</h2>
                     <p class="mb-2 lg:mb-8 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">取得している免許・資格の記入をしてください。</p>
-                    <form action="{{ route('form.store') }}" method="POST" class="space-y-8" x-data="licenceHandler()">
+                    <form action="#" method="POST" class="space-y-8" x-data="licenceHandler()">
                         @csrf
                         <template x-for="(field, index) in fields" :key="index">
                         <div class="border-2 border-black-500 bg-gray-50 p-2">

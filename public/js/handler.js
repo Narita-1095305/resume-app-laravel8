@@ -2,22 +2,22 @@ function workHandler() {
    return {
       fields: [
       {
-         year: '',
-         month: '',
-         background: '',
+         work_year: '',
+         work_month: '',
+         work_background: '',
       },
       {
-         year: '',
-         month: '',
-         background: '',
+         work_year: '',
+         work_month: '',
+         work_background: '',
       },
       ],
       addNewField() {
          if(this.fields.length < 9){
             this.fields.push({
-               year: '',
-               month: '',
-               background: '',
+               work_year: '',
+               work_month: '',
+               work_background: '',
             });
          }
       },
@@ -34,22 +34,22 @@ function educationHandler() {
    return {
       fields: [
       {
-         year: '',
-         month: '',
-         background: '',
+         education_year: '',
+         education_month: '',
+         education_background: '',
       },
       {
-         year: '',
-         month: '',
-         background: '',
+         education_year: '',
+         education_month: '',
+         education_background: '',
       },
       ],
       addNewField() {
          if(this.fields.length < 9){
             this.fields.push({
-               year: '',
-               month: '',
-               background: '',
+               education_year: '',
+               education_month: '',
+               education_background: '',
             });
          }
       },
@@ -69,9 +69,9 @@ function licenceHandler() {
       addNewField() {
          if(this.fields.length < 9){
             this.fields.push({
-               year: '',
-               month: '',
-               background: '',
+               licence_year: '',
+               licence_month: '',
+               licence_background: '',
             });
          }
       },

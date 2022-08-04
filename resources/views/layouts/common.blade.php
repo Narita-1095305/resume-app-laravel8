@@ -22,7 +22,7 @@
         <x-nav-bar />
     </header>
     <main>
-        @yield('content');
+        @yield('content')
     </main>
 </body>
 </html>

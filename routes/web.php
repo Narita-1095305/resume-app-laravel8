@@ -19,12 +19,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/education-form', [FormController::class, 'educationForm']);
-Route::get('/work-form', [FormController::class, 'workForm']);
-Route::get('/licence-form', [FormController::class, 'licenceForm']);
-Route::get('/summary-form', [FormController::class, 'summaryForm']);
-Route::get('/other-form', [FormController::class, 'otherForm']);
-Route::get('/dinamic-form', [FormController::class, 'dinamicForm']);
+/* 以下は画面確認用の為、削除 */
+// Route::get('/education-form', [FormController::class, 'educationForm']);
+// Route::get('/work-form', [FormController::class, 'workForm']);
+// Route::get('/licence-form', [FormController::class, 'licenceForm']);
+// Route::get('/summary-form', [FormController::class, 'summaryForm']);
+// Route::get('/other-form', [FormController::class, 'otherForm']);
+// Route::get('/dinamic-form', [FormController::class, 'dinamicForm']);
+Route::get('/resume', [FormController::class, 'resume']);
+
+Route::get('/carousel', [FormController::class, 'carousel']);
 Route::post('/store', [FormController::class, 'store'])->name('form.store');
 
 Route::get('/dashboard', function () {
