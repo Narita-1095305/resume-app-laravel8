@@ -13,7 +13,7 @@ function workHandler() {
       },
       ],
       addNewField() {
-         if(this.fields.length < 9){
+         if(this.fields.length < 12){
             this.fields.push({
                work_year: '',
                work_month: '',
@@ -22,9 +22,11 @@ function workHandler() {
          }
       },
       removeField(index) {
+         formCount--;
          this.fields.splice(index, 1);
       },
       removeAllField() {
+         formCount -= this.fields.length;
          this.fields.splice(0);
       }
    }
@@ -45,7 +47,7 @@ function educationHandler() {
       },
       ],
       addNewField() {
-         if(this.fields.length < 9){
+         if(this.fields.length < 12){
             this.fields.push({
                education_year: '',
                education_month: '',
@@ -67,7 +69,7 @@ function licenceHandler() {
       fields: [
       ],
       addNewField() {
-         if(this.fields.length < 9){
+         if(this.fields.length < 6){
             this.fields.push({
                licence_year: '',
                licence_month: '',
