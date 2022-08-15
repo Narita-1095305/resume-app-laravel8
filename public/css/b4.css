@@ -73,14 +73,14 @@ html, body, h1, h2, h3, ul, li, dl, dt, dd {
     padding: 0;
   }
   
-  @media screen and (max-width: 200mm) {
+  @media screen and (max-width: 1024px) {
     header .title h1 {
       font-size: 16px;
       line-height: 30px;
     }
   }
   
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1024px) {
     header .title h1 {
       display: block;
       font-size: 24px;
@@ -91,7 +91,7 @@ html, body, h1, h2, h3, ul, li, dl, dt, dd {
     font-size: 10px;
   }
   
-  @media screen and (max-width: 200mm) {
+  @media screen and (max-width: 1024px) {
     header .title p {
       display: none;
     }
@@ -138,7 +138,7 @@ html, body, h1, h2, h3, ul, li, dl, dt, dd {
     top: 12px;
   }
   
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1024px) {
     header .menu-button {
       display: block;
     }
@@ -148,7 +148,7 @@ html, body, h1, h2, h3, ul, li, dl, dt, dd {
     display: none;
   }
   
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1024px) {
     header #is-menu-show:checked + .menu-button::before {
       top: 0;
       transform: rotate(45deg);
@@ -183,7 +183,7 @@ html, body, h1, h2, h3, ul, li, dl, dt, dd {
     align-items: center;
   }
   
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1024px) {
     header .menu {
       display: none;
     }
@@ -319,14 +319,14 @@ html, body, h1, h2, h3, ul, li, dl, dt, dd {
     }
   }
   
-  @media screen and (max-width: 200mm) {
+  @media screen and (max-width: 1024px) {
     main .resume {
       width: 182mm;
       grid-template-columns: 182mm;
     }
   }
   
-  @media screen and (max-width: 182mm) {
+  @media screen and (max-width: 1024px) {
     main .resume {
       transform: translate(-17mm, 0);
     }
@@ -717,7 +717,7 @@ html, body, h1, h2, h3, ul, li, dl, dt, dd {
     text-align: center;
   }
   
-  @media screen and (max-width: 200mm) {
+  @media screen and (max-width: 1024px) {
     main .resume .right-page {
       border-top: 1px solid rgba(0, 0, 0, 0.5);
     }

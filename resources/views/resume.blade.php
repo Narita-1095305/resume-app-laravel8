@@ -102,7 +102,20 @@
             <p></p>
             <p>学歴</p>
           </div>
-          @isset($inputs['education'])
+          @forelse($inputs["education"] as $educations)
+            <div class="resume-line">
+            @foreach ($educations as $education)
+              <p>{{$education}}</p>
+            @endforeach
+            </div>
+          @empty
+          <div class="resume-line">
+            <p></p>
+            <p></p>
+            <p>無し</p>
+          </div>
+          @endforelse
+          {{-- @isset($inputs["education"])
             @foreach ($inputs["education"] as $educations)
               <div class="resume-line">
               @foreach ($educations as $education)
@@ -110,13 +123,8 @@
               @endforeach
               </div>
             @endforeach
-          @else
-          <div class="resume-line">
-            <p></p>
-            <p></p>
-            <p>なし</p>
-          </div>
-          @endisset
+          @endisset --}}
+
           <div class="resume-line">
             <p></p>
             <p></p>
@@ -127,53 +135,47 @@
             <p></p>
             <p>職歴</p>
           </div>
+
           @isset($inputs['work'])
             @foreach ($inputs["work"] as $works)
               <div class="resume-line">
-              @foreach ($works as $work)
-                <p>{{$work}}</p>
+                @foreach ($works as $work)
+                  @if($loop->last && is_null($inputs['work']) && (22 - (count($inputs['education']) + count($inputs['work']) + 4) == 0))
+                    <p>{{$work}} 以上</p>
+                  @else
+                  <p>{{$work}}</p>
+                  @endif
+                @endforeach
+                </div>
               @endforeach
-              </div>
-            @endforeach
-          @else
-          <div class="resume-line">
-            <p></p>
-            <p></p>
-            <p>なし</p>
-          </div>
-          @endisset
-          <div class="resume-line">
-            <p></p>
-            <p></p>
-            <p>以上</p>
-          </div>
-          @for($i = 0; $i < 22 - (count($inputs['education']) + count($inputs['work']) + 4); $i++)
-          <div class="resume-line">
-            <p></p>
-            <p></p>
-            <p></p>
-          </div>
-          @endfor
-          {{-- @for($i = 0; $i < 22; $i++)
-            @if($i === 0)
+              @if(22 - (count($inputs['education']) + count($inputs['work']) + 4) > 0)
+                <div class="resume-line">
+                  <p></p>
+                  <p></p>
+                  <p>以上</p>
+                </div>
+              @endif
+              @for($i = 0; $i < 22 - (count($inputs['education']) + count($inputs['work']) + 4); $i++)
               <div class="resume-line">
                 <p></p>
                 <p></p>
-                <p>学歴</p>
+                <p></p>
               </div>
-            @endif
-            @isset($inputs['education'])
-            <div class="resume-line">
-              <p>{{$inputs['education']['education_year'][$i] ?? ''}}</p>
-              <p>{{$inputs['education']['education_month'][$i] ?? ''}}</p>
-              <p>{{$inputs['education']['education_background'][$i] ?? ''}}</p>
-            </div>
+              @endfor
             @else
+            <div class="resume-line">
               <p></p>
               <p></p>
               <p>なし</p>
-            @endisset
-          @endfor --}}
+            </div>     
+            @for($i = 0; $i < 22 - (count($inputs['education']) + 4); $i++)
+              <div class="resume-line">
+                <p></p>
+                <p></p>
+                <p></p>
+              </div>
+            @endfor
+          @endisset
         </section>
       </section><!-- /.left-page -->
   
@@ -185,13 +187,37 @@
             <p>月</p>
             <p>学歴・職歴</p>
           </div>
-          @for($i = 22; $i < 31; $i++)
-          <div class="resume-line">
-            <p></p>
-            <p></p>
-            <p></p>
-          </div>
-          @endfor
+          @isset($inputs['work2'])
+            @foreach ($inputs["work2"] as $works)
+              <div class="resume-line">
+              @foreach ($works as $work)
+                <p>{{$work}}</p>
+              @endforeach
+              </div>
+            @endforeach
+            <div class="resume-line">
+              <p></p>
+              <p></p>
+              <p>以上</p>
+            </div>
+            @for($i = 0; $i < 8 - count($inputs['work2']); $i++)
+              <div class="resume-line">
+                <p></p>
+                <p></p>
+                <p></p>
+              </div>
+            @endfor
+          @else
+            @for($i = 0; $i < 8; $i++)
+              <div class="resume-line">
+                <p></p>
+                <p></p>
+                <p></p>
+              </div>
+            @endfor
+          @endisset
+
+          
         </section><!-- /.education-and-career-history -->
   
         <section class="qualifications">
@@ -200,6 +226,15 @@
             <p>月</p>
             <p>免許・資格</p>
           </div>
+          @isset($inputs['licence'])
+            @foreach ($inputs["licence"] as $licences)
+            <div class="qualifications-line">
+              @foreach($licences as $licence)
+              <p>{{$licence}}</p>
+              @endforeach
+            </div>
+            @endforeach
+          @endisset
           @for($i = 0; $i < 6; $i++)
           <div class="qualifications-line">
             <p></p>

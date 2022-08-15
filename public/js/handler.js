@@ -22,11 +22,9 @@ function workHandler() {
          }
       },
       removeField(index) {
-         formCount--;
          this.fields.splice(index, 1);
       },
       removeAllField() {
-         formCount -= this.fields.length;
          this.fields.splice(0);
       }
    }
@@ -57,9 +55,23 @@ function educationHandler() {
       },
       removeField(index) {
          this.fields.splice(index, 1);
+         if(this.fields.length < 2){
+            this.fields.push({
+               education_year: '',
+               education_month: '',
+               education_background: '',
+            });
+         }
       },
       removeAllField() {
          this.fields.splice(0);
+         for(let i = 0; i < 2; i++){
+            this.fields.push({
+               education_year: '',
+               education_month: '',
+               education_background: '',
+            });
+         }
       }
    }
 }
