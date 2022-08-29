@@ -94,6 +94,6 @@ function licenceHandler() {
       },
       removeAllField() {
          this.fields.splice(0);
-      }
+      },
    }
 }

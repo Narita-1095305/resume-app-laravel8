@@ -28,7 +28,6 @@
             横 24～30mm</p>
           <p>2.本人単身から上</p>
           <label for="id-photo">
-            <input type="file" id="id-photo" accept="image/gif,image/jpeg,image/jpg,image/png">
             <img id="photo-image">
           </label>
           <div id="contextmenu">
