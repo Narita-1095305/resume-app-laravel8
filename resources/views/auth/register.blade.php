@@ -96,7 +96,7 @@
                     <x-label for="gender" :value="__('性別')" />
                     <x-required-mark :value="__('必須')"/>
                 </div>
-                <x-select-box class="mt-1">
+                <x-select-box class="mt-1" name="gender">
                     <option value="1">男性</option>
                     <option value="2">女性</option>
                     <option value="3">その他</option>
