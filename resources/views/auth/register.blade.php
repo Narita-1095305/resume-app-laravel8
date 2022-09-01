@@ -9,7 +9,7 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register') }}" class="h-adr">
             @csrf
 
             <!-- 名前 -->
@@ -81,11 +81,11 @@
                     <x-required-mark :value="__('必須')"/>
                 </div>
                 <div class="flex">
-                    <x-input id="birth_year" class="block mt-1 w-1/3" type="number" name="birth_year" :value="old('birth_year')" required />
+                    <x-input id="birth_year" class="block mt-1 w-1/3" type="number" name="birth_year" :value="old('birth_year')" required min="1922" max="2022"/>
                     <p class="block font-medium self-center mx-1 mt-1">年</p>
-                    <x-input id="birth_month" class="block mt-1 w-1/4" type="number" name="birth_month" :value="old('birth_month')" required /> 
+                    <x-input id="birth_month" class="block mt-1 w-1/4" type="number" name="birth_month" :value="old('birth_month')" required min="1" max="12"/> 
                     <p class="block font-medium  self-center mx-1 mt-1">月</p>
-                    <x-input id="birth_day" class="block mt-1 w-1/4" type="number" name="birth_day" :value="old('birth_day')" required /> 
+                    <x-input id="birth_day" class="block mt-1 w-1/4" type="number" name="birth_day" :value="old('birth_day')" required min="1" max="31"/> 
                     <p class="block font-medium self-center mx-1 mt-1">日</p>
                 </div>
             </div>
@@ -96,12 +96,14 @@
                     <x-label for="gender" :value="__('性別')" />
                     <x-required-mark :value="__('必須')"/>
                 </div>
-                <x-select-box class="mt-1" name="gender">
+                <x-select-box class="mt-1" name="gender" required>
                     <option value="1">男性</option>
                     <option value="2">女性</option>
                     <option value="3">その他</option>
                 </x-select-box>
             </div>
+
+            <span class="p-country-name" style="display:none;">Japan</span>
 
             <!-- 郵便番号 -->
             <div class="mt-4">
@@ -110,8 +112,8 @@
                     <x-required-mark :value="__('必須')"/>
                 </div>
                 <div class="flex">
-                    <x-input id="zip_code" class="block mt-1 w-1/3" type="number" name="zip_code" :value="old('zip_code')" required />
-                    <x-button class="ml-4 self-center mt-1">住所検索</x-button>
+                    <x-input id="zip_code" class="p-postal-code block mt-1 w-1/3" type="text" name="zip_code" :value="old('zip_code')" required maxlength="7"/>
+                    {{-- <x-button class="ml-4 self-center mt-1">住所検索</x-button> --}}
                 </div>
             </div>
 
@@ -122,7 +124,7 @@
                     <x-required-mark :value="__('必須')"/>
                 </div>
                 <div class="flex">
-                    <x-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required />
+                    <x-input id="address" class="p-region p-locality p-street-address p-extended-address block mt-1 w-full" type="text" name="address" :value="old('address')" required />
                 </div>
             </div>
 
@@ -154,7 +156,12 @@
                     <x-required-mark :value="__('必須')"/>
                 </div>
                 <div class="flex">
-                    <x-input id="telephone_number" class="block mt-1 w-1/2" type="tel" name="telephone_number" :value="old('telephone_number')" required pattern="\d{2,4}-?\d{2,4}-?\d{3,4}"/>
+                    <x-input id="telephone_number_first" class="block mt-1 w-1/4" type="text" name="telephone_number_first" :value="old('telephone_number_first')" required max-length="4"/>
+                    <p class="block font-medium self-center mx-1 mt-1">-</p>
+                    <x-input id="telephone_number_middle" class="block mt-1 w-1/4" type="text" name="telephone_number_middle" :value="old('telephone_number_middle')" required max-length="4"/> 
+                    <p class="block font-medium  self-center mx-1 mt-1">-</p>
+                    <x-input id="telephone_number_last" class="block mt-1 w-1/4" type="text" name="telephone_number_last" :value="old('telephone_number_last')" required max-length="4"/> 
+                    {{-- <x-input id="telephone_number" class="block mt-1 w-1/2" type="tel" name="telephone_number" :value="old('telephone_number')" required pattern="\d{2,4}-?\d{2,4}-?\d{3,4}"/> --}}
                 </div>
             </div>
 

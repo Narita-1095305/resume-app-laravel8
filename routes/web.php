@@ -26,7 +26,7 @@ Route::get('/', function () {
 // Route::get('/summary-form', [FormController::class, 'summaryForm']);
 // Route::get('/other-form', [FormController::class, 'otherForm']);
 // Route::get('/dinamic-form', [FormController::class, 'dinamicForm']);
-Route::get('/form', [FormController::class, 'form']);
+Route::get('/form', [FormController::class, 'form'])->middleware(['auth']);
 
 Route::get('/resume', [FormController::class, 'resume']);
 

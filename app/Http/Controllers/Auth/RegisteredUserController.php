@@ -39,12 +39,15 @@ class RegisteredUserController extends Controller
             'first_name' => 'required|string|max:255',
             'family_furigana' => 'required|string|max:255',
             'first_furigana' => 'required|string|max:255',
-            'birth_year' => 'required|integer|digits:4',
-            'birth_month' => 'required|integer|digits_between:1,2',
-            'birth_day' => 'required|integer|digits_between:1,2',
+            'birth_year' => 'required|integer|digits:4|between:1922,2022',
+            'birth_month' => 'required|integer|digits_between:1,2|between:1,12',
+            'birth_day' => 'required|integer|digits_between:1,2|between:1,31',
             'gender' => 'required|integer|digits_between:1,3',
 
-            'telephone_number' => 'required|string|max:20',
+            'telephone_number_first' => 'required|string|max:4',
+            'telephone_number_middle' => 'required|string|max:4',
+            'telephone_number_last' => 'required|string|max:4',
+
             'zip_code' => 'required|string|size:7',
             'address' => 'required|string|max:255',
             'address_furigana' => 'required|string|max:255',
@@ -53,7 +56,6 @@ class RegisteredUserController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-        
         
         $user = User::create([
             'family_name' => $request->family_name,
@@ -65,8 +67,8 @@ class RegisteredUserController extends Controller
             'birth_day' => $request->birth_day,
             'gender' => $request->gender,
 
-            'telephone_number' => $request->telephone_number,
-            'zip_code' => $request->zip_code,
+            'telephone_number' => $request->telephone_number_first."-".$request->telephone_number_middle."-".$request->telephone_number_last,
+            'zip_code' => substr($request->zip_code, 0, 3)."-".substr($request->zip_code, 3, 4),
             'address' => $request->address,
             'address_furigana' => $request->address_furigana,
             'building' => is_null($request->building) ? '' : $request->building,
