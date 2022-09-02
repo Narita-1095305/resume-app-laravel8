@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class UserFactory extends Factory
 {
@@ -15,12 +16,31 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
+            'family_name' => $this->faker->lastName(),
+            'first_name' => $this->faker->firstName(),
+            'family_furigana' => $this->faker->realText(10),
+            'first_furigana' => $this->faker->realText(10),
+            'birth_year' => $this->faker->year(),
+            'birth_month' => $this->faker->month(),
+            'birth_day' => $this->faker->dayOfMonth(),
+            'gender' => $this->faker->randomElement(['1','2','3']),
+
+            'telephone_number' => $this->faker->regexify('[0-9]{3}-[0-9]{4}-[0-9]{4}'),
+            'zip_code' => 	$this->faker->regexify('[1-9]{3}-[0-9]{4}'),
+            'address' => $this->faker->realText(10),
+            'address_furigana' =>  $this->faker->realText(30),
+            'building' =>  $this->faker->realText(10),
+
             'email' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
+            'password' => Hash::make('password'),
         ];
+        // return [
+        //     'name' => $this->faker->name(),
+        //     'email' => $this->faker->unique()->safeEmail(),
+        //     'email_verified_at' => now(),
+        //     'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        //     'remember_token' => Str::random(10),
+        // ];
     }
 
     /**
