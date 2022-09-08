@@ -11,12 +11,21 @@ class FormController extends Controller
         return view('form');
     }
 
-    public function resume(){
-        return view('resume');
-    }
+    // public function resume(){
+    //     return view('resume');
+    // }
 
-    public function carousel(){
-        return view('carousel');
+    // public function carousel(){
+    //     return view('carousel');
+    // }
+
+    public function generate_pdf() {
+        return view("samplepdf");
+        $pdf = \PDF::loadView('samplepdf');
+    	return $pdf->setOption('encoding', 'utf-8')->setPaper('B5')->
+        setOption('user-style-sheet', base_path() . '/public/css/style.css')->
+        setOption('orientation', 'Landscape')->inline();
+
     }
 
     public function store(Request $request){
@@ -52,7 +61,18 @@ class FormController extends Controller
             // unset($inputs['licence_year'],$inputs['licence_month'],$inputs['licence_background']);
         }
 
-        dd(compact('inputs'));
-        return view('resume',compact('inputs'));
+        // dd(compact('inputs'));
+        // return view('resume',compact('inputs'));
+        $pdf = \PDF::loadView('resume',compact('inputs'))
+            ->setOption('encoding', 'utf-8')
+            ->setPaper('B4')
+            ->setOption('orientation', 'Landscape');
+            // ->setOption('user-style-sheet', base_path() . '/public/css/app.css')
+            // ->setOption('user-style-sheet', base_path() . '/public/css/b4.css');
+        // $pdf->setPaper("B4");
+        return $pdf->inline();
+
+        // return view('resume',compact('inputs'));
+        // return $pdf->stream('title.pdf');
     }
 }

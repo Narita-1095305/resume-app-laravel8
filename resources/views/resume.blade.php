@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="css/b4.css">
+  {{-- <link rel="stylesheet" href="css/b4.css"> --}}
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
@@ -247,7 +247,7 @@
 
           <section class="self-promotion entry-field">
             <p class="label">志望の動機、自己PR、趣味、特技など</p>
-            <p id="self-promotion" class="multiple-lines"></p>
+            <p id="self-promotion" class="multiple-lines"><p>{{$inputs['summary']}}</p></p>
           </section><!-- /.self-promotion -->
     
           <section class="commuting-time">
@@ -291,11 +291,6 @@
   
       </section><!-- /.right-page -->
     </section>
-
-    <div id="help-window">
-      <iframe src="help.html" frameborder="0"></iframe>
-      <div class="help-close"></div>
-    </div>
 
   </main>
 </body>

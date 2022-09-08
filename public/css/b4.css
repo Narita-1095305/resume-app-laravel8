@@ -25,6 +25,17 @@ html, body, h1, h2, h3, ul, li, dl, dt, dd {
     max-width: 100%;
     height: auto;
   }
+
+  @page {
+    size: B4 landscape;
+    margin: 0mm;
+  }
+
+  @media print {
+    #buttons {
+      display: none;
+    }
+  }
   
   /* page styleing
   ---------------------------------------------------------------------------- */
@@ -242,7 +253,7 @@ html, body, h1, h2, h3, ul, li, dl, dt, dd {
     height: 20px;
     border-radius: 100%;
     background-color: #fff;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); */
     transition: 0.4s;
     cursor: pointer;
   }

@@ -16,8 +16,8 @@ class UserSeeder extends Seeder
     public function run()
     {   
         Schema::disableForeignKeyConstraints(); 
-        User::truncate();  // 既存データを削除する場合のみ
+        User::truncate();
         Schema::enableForeignKeyConstraints();
-        User::factory(10)->create();  // 10個作成ね！
+        User::factory(10)->create(); 
     }
 }

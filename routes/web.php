@@ -19,11 +19,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/form', [FormController::class, 'form'])->middleware(['auth'])->name('form');;
 
-Route::get('/resume', [FormController::class, 'resume']);
+// Route::get('/resume', [FormController::class, 'resume']);
 
-Route::get('/carousel', [FormController::class, 'carousel']);
+Route::get('/pdf', [FormController::class, 'generate_pdf']);
+
+// Route::get('/carousel', [FormController::class, 'carousel']);
 Route::post('/store', [FormController::class, 'store'])->name('form.store');
 
 Route::get('/dashboard', function () {
