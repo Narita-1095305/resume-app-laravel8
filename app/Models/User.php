@@ -37,4 +37,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function resumes(){
+        return $this->hasMany(Resume::class, 'users_id');
+    }
+
+    public function getYearsOld($year,$month,$day){
+        $birthday = "{$year}";
+        $birthday .= $month < 10  ? "0{$month}" : "{$month}";
+        $birthday .= $day < 10  ? "0{$day}" : "{$day}";
+        $now = date("Ymd");
+
+        return floor(($now - $birthday) / 10000);
+    }
 }

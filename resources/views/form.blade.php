@@ -28,9 +28,12 @@
         </div>
         <div class="min-h-screen flex flex-col items-center pt-2 sm:pt-0">
             <div class="w-full sm:max-w-md mt-1 px-6 overflow-hidden sm:rounded-lg">
-            <form action="{{ route('form.store') }}" method="POST" class="space-y-8">
+            <form action="{{ route('form.preview') }}" method="POST" class="space-y-8">
                 @csrf
                 <div class="w-full sm:max-w-md mt-6 overflow-hidden sm:rounded-lg">
+                    <div id="education-form" class="my-2 px-6 py-4 rounded-lg bg-white drop-shadow-md">
+                        <x-title-form />
+                    </div>
                     <div id="education-form" class="my-2 px-6 py-4 rounded-lg bg-white drop-shadow-md">
                         <x-education-form />
                     </div>

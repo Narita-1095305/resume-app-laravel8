@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\FormController;
-
+use App\Http\Controllers\ResumeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,18 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::Resource('resumes', ResumeController::class)->middleware(['auth']);
 
-Route::get('/form', [FormController::class, 'form'])->middleware(['auth'])->name('form');;
+Route::get('/form', [FormController::class, 'form'])->middleware(['auth'])->name('form');
 
-// Route::get('/resume', [FormController::class, 'resume']);
+Route::post('/preview', [FormController::class, 'preview'])->name('form.preview');
 
-Route::get('/pdf', [FormController::class, 'generate_pdf']);
-
-// Route::get('/carousel', [FormController::class, 'carousel']);
 Route::post('/store', [FormController::class, 'store'])->name('form.store');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';

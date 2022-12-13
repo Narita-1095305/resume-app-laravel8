@@ -15,7 +15,13 @@ class CreateResumesTable extends Migration
     {
         Schema::create('resumes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->string('title');
+            $table->string('result')->nullable();
+            $table->foreignId('users_id')->constrained()->onDelete('cascade');
+            $table->integer('is_spouse')->nullable();
+            $table->integer('is_spouse_dependent')->nullable();
+            $table->text('self_pr')->nullable();
+            $table->text('other')->nullable();
             $table->timestamps();
         });
     }

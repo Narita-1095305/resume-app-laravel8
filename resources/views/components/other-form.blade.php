@@ -21,40 +21,18 @@
 <div class="p-2">
     <label for="is_spouse" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">配偶者</label>
     <div class="flex mb-2">
-        <input type="radio" name="is_spouse" value="あり">あり
-        <input type="radio" name="is_spouse" value="なし">なし
+        <input type="hidden" name="is_spouse" value="-1">
+        <input type="radio" name="is_spouse" value="1">あり
+        <input type="radio" name="is_spouse" value="0">なし
     </div>
 </div>
 
 <div class="p-2">
     <label for="is_spouse_dependent" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">配偶者の扶養義務</label>
     <div class="flex mb-2">
-        <input type="radio" name="is_spouse_dependent" value="あり">あり
-        <input type="radio" name="is_spouse_dependent" value="なし">なし
-    </div>
-</div>
-
-<div class="p-2">
-    <label for="is_international_student" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">あなたは留学生ですか</label>
-    <div class="flex mb-2">
-        <input type="radio" name="is_international_student" value="はい">はい
-        <input type="radio" name="is_international_student" value="いいえ">いいえ
-    </div>
-</div>
-
-<div class="p-2">
-    <label for="current_salary" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">現在の年収</label>
-    <div class="flex mb-2">
-        <x-input id="current_salary" class="block w-1/4" min="0" type="number" name="current_salary" />
-        <p class="block font-medium self-center mx-1 mt-1">万円</p>
-    </div>
-</div>
-
-<div class="p-2">
-    <label for="expected_salary" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">希望年収</label>
-    <div class="flex mb-2">
-        <x-input id="expected_salary" class="block w-1/4" min="0" type="number" name="expected_salary" />
-        <p class="block font-medium self-center mx-1 mt-1">万円</p>
+        <input type="hidden" name="is_spouse_dependent" value="-1">
+        <input type="radio" name="is_spouse_dependent" value="1">あり
+        <input type="radio" name="is_spouse_dependent" value="0">なし
     </div>
 </div>
 
