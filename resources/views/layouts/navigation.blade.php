@@ -15,7 +15,7 @@
                     <x-nav-link :href="route('resumes.index')" :active="request()->routeIs('resumes.index')">
                         {{ __('履歴書一覧') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('form')" :active="request()->routeIs('form')">
+                    <x-nav-link :href="route('resumes.create')" :active="request()->routeIs('resumes.create')">
                         {{ __('履歴書作成') }}
                     </x-nav-link>
                 </div>

@@ -20,10 +20,10 @@ class Resume extends Model
     }
 
     public function educations(){
-        return $this->hasMany(Educations::class, 'resumes_id');
+        return $this->hasMany(Education::class, 'resumes_id');
     }
 
     public function licences(){
-        return $this->hasMany(Licences::class, 'resumes_id');
+        return $this->hasMany(Licence::class, 'resumes_id');
     }
 }

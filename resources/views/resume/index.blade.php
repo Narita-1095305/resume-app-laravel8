@@ -27,7 +27,7 @@
 					@foreach($resumes as $resume)
 					<tr>
             <td class="px-4 py-3">
-							<a href="{{ route('resumes.show', $resume) }}">
+							<a class="text-blue-500" href="{{ route('resumes.show', $resume) }}">
 								{{ $resume->title }}
 							</a>
 						</td>
@@ -35,10 +35,18 @@
             <td class="px-4 py-3">{{ $resume->memo }}</td>
             <td class="px-4 py-3">{{ $resume->created_at }}</td>
             <td class="border-gray-200 px-4 py-3">
-                <a class="bg-blue-500 hover:bg-blue-400 text-white rounded px-1 py-2">編集</a>
+                <a>
+                  <button class="bg-blue-500 hover:bg-blue-400 text-white rounded px-1 py-2">
+                    編集
+                  </button>
+                </a>
             </td>
             <td class="border-gray-200 px-4 py-3">
-                <a class="bg-blue-500 hover:bg-blue-400 text-white rounded px-1 py-2">削除</a>
+                <a>
+                  <button class="bg-blue-500 hover:bg-blue-400 text-white rounded px-1 py-2">
+                    削除
+                  </button>
+                </a>
             </td>
           </tr>
 					

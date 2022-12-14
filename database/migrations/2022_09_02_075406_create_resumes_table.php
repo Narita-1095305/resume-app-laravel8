@@ -18,6 +18,9 @@ class CreateResumesTable extends Migration
             $table->string('title');
             $table->string('result')->nullable();
             $table->foreignId('users_id')->constrained()->onDelete('cascade');
+            $table->integer('spouse_num')->nullable();
+            $table->integer('commuting_hour')->nullable();
+            $table->integer('commuting_minutes')->nullable();
             $table->integer('is_spouse')->nullable();
             $table->integer('is_spouse_dependent')->nullable();
             $table->text('self_pr')->nullable();
