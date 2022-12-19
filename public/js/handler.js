@@ -78,8 +78,7 @@ function educationHandler() {
 
 function licenceHandler() {
    return {
-      fields: [
-      ],
+      fields: [],
       addNewField() {
          if(this.fields.length < 6){
             this.fields.push({

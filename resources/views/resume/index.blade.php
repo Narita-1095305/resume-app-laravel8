@@ -35,18 +35,20 @@
             <td class="px-4 py-3">{{ $resume->memo }}</td>
             <td class="px-4 py-3">{{ $resume->created_at }}</td>
             <td class="border-gray-200 px-4 py-3">
-                <a>
+                <a href="{{ route('resumes.edit', $resume) }}">
                   <button class="bg-blue-500 hover:bg-blue-400 text-white rounded px-1 py-2">
                     編集
                   </button>
                 </a>
             </td>
             <td class="border-gray-200 px-4 py-3">
-                <a>
-                  <button class="bg-blue-500 hover:bg-blue-400 text-white rounded px-1 py-2">
+              <form action="{{route('resumes.destroy', $resume)}}" method="post">
+                @csrf
+                @method('DELETE')
+                <button class="bg-red-500 hover:bg-red-700 text-white px-1 py-2 rounded" onclick='return confirm("削除しますか？");'>
                     削除
-                  </button>
-                </a>
+                </button>
+            </form>
             </td>
           </tr>
 					

@@ -87,4 +87,83 @@ class ResumeController extends Controller
         }
         return redirect()->route('resumes.index');
     }
+
+    public function edit($id){
+        $resume = Resume::find($id);
+        // dd($resume->licences);
+        return view('resume.edit',compact('resume'));
+    }
+
+    public function update($id, Request $request){
+        $resume = Resume::find($id);
+        // dd($resume->educations[0]->id);
+        $resume->update([
+            'title' => $request->title,
+            'self_pr' => $request->summary,
+            'commuting_hour' => $request->hour,
+            'commuting_minutes' => $request->minutes,
+            'spouse_num' => $request->family_num,
+            'is_spouse' => $request->is_spouse,
+            'is_spouse_dependent' => $request->is_spouse_dependent,
+            'other' => $request->other,
+        ]);
+
+        if(isset($request->education_year)){
+            $education_params = [];
+            for($i = 0; $i < count($request->education_year); $i++){
+                $education_params[] = [
+                    'id' => $resume->educations[$i]->id,
+                    'resumes_id' => $resume->id,
+                    'year' => $request->education_year[$i],
+                    'month' => $request->education_month[$i],
+                    'background' => $request->education_background[$i],
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ];
+            }
+            Education::upsert($education_params, ['id']);
+        }
+
+        if(isset($request->work_year)){
+            $work_params = [];
+            for($i = 0; $i < count($request->work_year); $i++){
+                $work_params[] = [
+                    'id' => $resume->works[$i]->id,
+                    'resumes_id' => $resume->id,
+                    'year' => $request->work_year[$i],
+                    'month' => $request->work_month[$i],
+                    'background' => $request->work_background[$i],
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ];
+            }
+            Work::upsert($work_params, ['id']);
+        }
+
+        if(isset($request->licence_year)){
+            $licence_params = [];
+            for($i = 0; $i < count($request->licence_year); $i++){
+                $licence_params[] = [
+                    'id' => $resume->licences[$i]->id,
+                    'resumes_id' => $resume->id,
+                    'year' => $request->licence_year[$i],
+                    'month' => $request->licence_month[$i],
+                    'background' => $request->licence_background[$i],
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ];
+            }
+            Licence::upsert($licence_params, ['id']);
+        }
+        
+        return redirect()->route('resumes.index');
+    }
+
+    public function destroy($id){
+        $resume = Resume::find($id);
+
+        $resume->delete();
+
+        return redirect()->route('resumes.index');
+    }
 }
