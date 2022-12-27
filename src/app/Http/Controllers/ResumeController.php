@@ -19,6 +19,7 @@ class ResumeController extends Controller
 
     public function show($id){
         $resume = Resume::find($id);
+        
         return view('resume.show',compact('resume'));
     }
 
@@ -99,6 +100,7 @@ class ResumeController extends Controller
         // dd($resume->educations[0]->id);
         $resume->update([
             'title' => $request->title,
+            'result' => $request->result,
             'self_pr' => $request->summary,
             'commuting_hour' => $request->hour,
             'commuting_minutes' => $request->minutes,
