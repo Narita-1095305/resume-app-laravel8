@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  php:
+    # ./docker/phpの内容(Dockerfile,php.ini,000-default)でphpコンテナ作成する
+    build: ./docker/php
+    # ./srcと/var/wwwをマウント。./srcと/var/wwwの変更内容が同期される。
+    volumes:
+      - ./src:/var/www
+    # 使用するポート番号を指定
+    ports:
+      - ${WEB_PORT}:80
+    # コンテナ名を指定
+    container_name: ${PHP_CONTAINER}
+
+  # laravelの設定の際に、DB_HOSTとして指定される
+  mysql:
+    image: mysql:8.0
+    # mysql8の認証プラグイン。この記述がないと弾かれる。
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    ports:
+        # ${DB_PORT}と.envのWEB_PORTが対応
+        - ${DB_PORT}:3306
+    environment:
+        MYSQL_DATABASE: ${DB_NAME}
+        MYSQL_USER: ${DB_USER}
+        MYSQL_ROOT_PASSWORD: ${DB_PASS}
+        MYSQL_PASSWORD: ${DB_PASS}
+    container_name: ${MYSQL_CONTAINER}
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mysql #mysqlサービス名を指定
+      - PMA_USER=${PMA_USER}
+      - PMA_PASSWORD=${PMA_PASS}
+    links:
+      - mysql
+    ports:
+      - ${PMA_PORT}:80
+    volumes:
+      - ./phpmyadmin/sessions:/sessions
+    container_name: ${PMA_CONTAINER}
